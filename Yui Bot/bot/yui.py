@@ -12,8 +12,6 @@ import datetime
 import sys
 import logging
 import traceback
-import requests
-
 
 # I keep anything like game status, dnd , def etc
 
@@ -110,11 +108,11 @@ async def on_message(message):
 
     else: pass
 
-    
 @client.remove_command('help')
+
 @client.command(pass_context=True)
 async def help(ctx):
-    com = ctx.message.content.lower().split(" ")
+    com = ctx.message.content.lower().split("")
     base = False
     if len(com)>1:
         c=com[1]
@@ -131,6 +129,8 @@ async def help(ctx):
             await client.say(s)
 
 
+
+    
             
 #I might put really unnessasary things here like the bee movie script, so don't freak lmao
 
