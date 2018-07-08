@@ -15,6 +15,22 @@ import traceback
 
 # I keep anything like game status, dnd , def etc
 
+@client.command(pass_context=True)
+async def help(ctx):
+    com = ctx.message.content.lower().split(" ")
+    base = False
+    if len(com)>1:
+        c = com[1]
+        if c == "commandname":
+            await client.say("```/commandname```")
+        elif c == "othercommand":
+			await client.say("```/othercommand```")
+    else: base = True
+    s = ""
+    if base:
+        s += "/help [command] for help on that command```"
+        await client.say(s)
+        
 
 def process_message(message):
     args = message.content.split(" ")
@@ -95,10 +111,6 @@ async def on_message(message):
         userID = message.author.id
         await client.send_message(message.channel,"There is no door that goes dong, <@%s>"%(userID))
 
-    if message.content.upper().startswith("*HELP"):
-        await client.send_message(message.channel,"Still in progress (4/40 commands left)")
-
-            
 #I might put really unnessasary things here like the bee movie script, so don't freak lmao
 
 
