@@ -35,7 +35,7 @@ async def on_ready():
     print('--------')
     print('--------')
     print('You are running Yui Funami v1.1')
-    print("Created by Yuriii6969")
+    print("Created by Yuriii6969 and Tiln#0416")
     return await client.change_presence(game=discord.Game(name='with my smart developer ;p;',status=discord.Status("dnd"))) 
 #Here i have put commands that don't require the commad prefix (*)... Editable i guess  
 
