@@ -24,6 +24,28 @@ def process_message(message):
 Client = discord.Client()
 client = commands.Bot(command_prefix = "*")
 
+@client.command(pass_context=True)
+async def help(ctx):
+    com = ctx.message.content.lower().split(" ")
+    base = False
+    if len(com)>1:
+        c = com[1]
+        if c == "commandname":
+            await client.say("```/commandname```")
+        elif c == "othercommand":
+			await client.say("```/othercommand```")
+    else: base = True
+    s = ""
+    if base:
+        s += "/help [command] for help on that command```"
+        await client.say(s)
+        
+
+def process_message(message):
+    args = message.content.split(" ")
+ 
+    return args
+
 @client.event
 
 async def on_ready():
