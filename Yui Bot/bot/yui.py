@@ -103,7 +103,13 @@ async def on_message(message):
         userID = message.author.id
         await client.send_message(message.channel,"There is no door that goes dong, <@%s>"%(userID))
 
+    if message.content.upper().startswith("*INVITE"):
+        userID = message.author
+        await client.send_message(message.channel,"``` To invite Yui to your server, use https://discordapp.com/api/oauth2/authorize?client_id=456910763504697363&permissions=8&scope=bot (Hey, we're still learning embeds,k)```")
+
     else: pass
+
+    
 @client.remove_command('help')
 @client.command(pass_context=True)
 async def help(ctx):
