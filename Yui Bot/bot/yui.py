@@ -1,4 +1,3 @@
-
 import discord
 from discord.ext.commands import Bot
 from discord.ext import commands
@@ -13,6 +12,8 @@ import datetime
 import sys
 import logging
 import traceback
+import requests
+
 
 # I keep anything like game status, dnd , def etc
 
@@ -128,7 +129,7 @@ async def help(ctx):
         if base:
             s = "/help [command] for help on that command```"
             await client.say(s)
-    
+
 
             
 #I might put really unnessasary things here like the bee movie script, so don't freak lmao
