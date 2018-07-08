@@ -95,12 +95,6 @@ async def on_message(message):
         userID = message.author.id
         await client.send_message(message.channel,"There is no door that goes dong, <@%s>"%(userID))
 
-    if message.content.upper().startswith("*DONATE"):
-        await client.send_message(message.channel,"Donate at paypal.me/Yuriii444 to support the Developers of this bot.")
-
-    if message.content.upper()("IM SURE SOMEONE AGREES WITH ME THAT I'M SMART"):
-        await client.send_message(message.channel,"I do.")
-
     if message.content.upper().startswith("*HELP"):
         await client.send_message(message.channel,"Still in progress (4/40 commands left)")
 
