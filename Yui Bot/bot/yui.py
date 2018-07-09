@@ -55,62 +55,62 @@ async def on_message(message):
     if message.content == "lesbian":
         await bot.send_message(message.channel,"lesbian...lesbeannnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn. No?? okay then :<")
     if message.content == "asexual":
-        await client.send_message(message.channel,"asexual uh...assexual")
+        await bot.send_message(message.channel,"asexual uh...assexual")
     if message.content == "qwertyuiopsexual":
-        await client.send_message(message.channel,"Stop, just stop.")
+        await bot.send_message(message.channel,"Stop, just stop.")
     if message.content == "demisexual":
-        await client.send_message(message.channel,";-;")
+        await bot.send_message(message.channel,";-;")
     if message.content == "ayy":
-        await client.send_message(message.channel,"lmao")
+        await bot.send_message(message.channel,"lmao")
 
 
 # Some compusary commands that will not help in ANY way or form...
 
     if message.content.upper().startswith('*GAY'):
-        await client.send_message(message.channel, 'Who is gay?? Type *name _namehere_')
+        await bot.send_message(message.channel, 'Who is gay?? Type *name _namehere_')
 
         def check(message):
             return message.content.upper().startswith('*NAME')
 
-        message = await client.wait_for_message(author=message.author, check=check)
+        message = await bot.wait_for_message(author=message.author, check=check)
         name = message.content[len('*name'):].strip()
-        await client.send_message(message.channel, '{} is gay indeed'.format(name))
+        await bot.send_message(message.channel, '{} is gay indeed'.format(name))
 
     if message.content.upper().startswith('*PING'):
-        await client.send_message(message.channel,'{:.2f}ms'.format(client.latency * 1000))
+        await bot.send_message(message.channel,'{:.2f}ms'.format(client.latency * 1000))
 
 
     if message.content.upper().startswith('*PONG'):
         userID = message.author.id
-        await client.send_message(message.channel, '<@%s> ping :)'%(userID))
+        await bot.send_message(message.channel, '<@%s> ping :)'%(userID))
         
     if message.content.upper().startswith("*HELLO"):
-        await client.send_message(message.channel, "henlo")
+        await bot.send_message(message.channel, "henlo")
         
     if message.content.upper().startswith("*ROAST"):
         userID = message.author.id
-        await client.send_message(message.channel,"roasting ur children for you <@%s>"%(userID))
+        await bot.send_message(message.channel,"roasting ur children for you <@%s>"%(userID))
     
     if message.content.startswith("*echo".casefold()):
-        client.send_message(message.channel, "You said: {}".format(message.content.lstrip("*echo ")))
+        bot.send_message(message.channel, "You said: {}".format(message.content.lstrip("*echo ")))
 
     if message.content.upper().startswith("*DING"):
         userID = message.author.id
-        await client.send_message(message.channel,"dong <@%s>"%(userID))
+        await bot.send_message(message.channel,"dong <@%s>"%(userID))
 
     if message.content.upper().startswith("*DONG"):
         userID = message.author.id
-        await client.send_message(message.channel,"There is no door that goes dong, <@%s>"%(userID))
+        await bot.send_message(message.channel,"There is no door that goes dong, <@%s>"%(userID))
 
     if message.content.upper().startswith("*INVITE"):
         userID = message.author
-        await client.send_message(message.channel,"``` To invite Yui to your server, use https://discordapp.com/api/oauth2/authorize?client_id=456910763504697363&permissions=8&scope=bot (Hey, we're still learning embeds,k)```")
+        await bot.send_message(message.channel,"``` To invite Yui to your server, use https://discordapp.com/api/oauth2/authorize?client_id=456910763504697363&permissions=8&scope=bot (Hey, we're still learning embeds,k)```")
 
     else: pass
 
-@client.remove_command('help')
+@bot.remove_command('help')
 
-@client.command(pass_context=True)
+@bot.command(pass_context=True)
 async def help(ctx):
     com = ctx.message.content.lower().split("")
     base = False
