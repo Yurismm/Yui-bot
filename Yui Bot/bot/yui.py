@@ -117,16 +117,16 @@ async def help(ctx):
     if len(com)>1:
         c=com[1]
         if c=="commandname":
-            await client.say("```/commandname```")
+            await bot.say("```/commandname```")
 
         elif c== "othercommand":
-            await client.say("```/othercommand```")
+            await bot.say("```/othercommand```")
 
         else: base= True
         s = ""
         if base:
             s = "/help [command] for help on that command```"
-            await client.say(s)
+            await bot.say(s)
 
 
 
