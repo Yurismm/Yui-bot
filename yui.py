@@ -1,5 +1,5 @@
 import discord
-#from discord.ext.commands import Bot   <------    this does nothing
+from discord.ext.commands import Bot
 from discord.ext import commands
 import asyncio
 import os
@@ -193,8 +193,11 @@ async def _eval(ctx, *, body: str):
 
 
         
+<<<<<<< HEAD
 bot.run("key")
 =======
+=======
+>>>>>>> 78b5a4d647add3fc8db68fc267b7d5da9cf773ff
 if not os.environ.get('TOKEN'):
     print("no token found REEEE!")
 bot.run(os.environ.get('TOKEN').strip('"'))
