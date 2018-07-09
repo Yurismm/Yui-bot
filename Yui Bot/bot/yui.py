@@ -21,7 +21,7 @@ def process_message(message):
  
     return args
 Client = discord.Client()
-client = commands.Bot(command_prefix = "*")
+bot = commands.Bot(command_prefix = "*")
 
 
 
@@ -46,14 +46,14 @@ async def on_ready():
     return await client.change_presence(game=discord.Game(name='with my smart developer ;p;',status=discord.Status("dnd"))) 
 #Here i have put commands that don't require the commad prefix (*)... Editable i guess  
 
-@client.event
+@bot.event
 async def on_message(message):
     if message.content == "gay":
-        await client.send_message(message.channel,"gay to you too")
+        await bot.send_message(message.channel,"gay to you too")
     if message.content == "pansexual":
-        await client.send_message(message.channel,"i'm a pan. They cook eggs on me. Sexually, of course")
+        await bot.send_message(message.channel,"i'm a pan. They cook eggs on me. Sexually, of course")
     if message.content == "lesbian":
-        await client.send_message(message.channel,"lesbian...lesbeannnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn. No?? okay then :<")
+        await bot.send_message(message.channel,"lesbian...lesbeannnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn. No?? okay then :<")
     if message.content == "asexual":
         await client.send_message(message.channel,"asexual uh...assexual")
     if message.content == "qwertyuiopsexual":
