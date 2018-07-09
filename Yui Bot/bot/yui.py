@@ -137,4 +137,4 @@ async def help(ctx):
 
 
         
-client.run("token")
+bot.run("token")
