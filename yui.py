@@ -23,7 +23,7 @@ def process_message(message):
     args = message.content.split(" ")
  
     return args
-Client = discord.Client()
+
 bot = commands.Bot(command_prefix = "*")
 
 logging.basicConfig(level=logging.ERROR)
@@ -48,17 +48,17 @@ ownerids=['358970589697933314', '293159670040887297', '115707766714138627']
 
 @bot.event
 async def on_ready():
-    print('Logged in as '+client.user.name+' (ID:'+client.user.id+') | Connected to '+str(len(client.servers))+' servers | Connected to '+str(len(set(client.get_all_members())))+' users')
+    print('Logged in as '+bot.user.name+' (ID:'+bot.user.id+') | Connected to '+str(len(bot.servers))+' servers | Connected to '+str(len(set(bot.get_all_members())))+' users')
     print('--------')
     print('Current Discord.py Version: {} | Current Python Version: {}'.format(discord.__version__, platform.python_version()))
     print('--------')
-    print('Use this link to invite {}:'.format(client.user.name))
-    print('https://discordapp.com/oauth2/authorize?client_id={}&scope=bot&permissions=8'.format(client.user.id))
+    print('Use this link to invite {}:'.format(bot.user.name))
+    print('https://discordapp.com/oauth2/authorize?client_id={}&scope=bot&permissions=8'.format(bot.user.id))
     print('--------')
     print('--------')
     print('You are running Yui Funami v1.1')
     print("Created by Yuriii6969,Tiln#0416,mariobob#8342 and CheesyPotato#5378")
-    return await client.change_presence(game=discord.Game(name='with my smart developer ;p;',status=discord.Status("dnd"))) 
+    return await bot.change_presence(game=discord.Game(name='with my smart developer ;p;',status=discord.Status("dnd"))) 
 #Here i have put commands that don't require the commad prefix (*)... Editable i guess  
 
 
