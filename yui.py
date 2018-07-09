@@ -148,7 +148,7 @@ async def help(ctx):
 @bot.command(pass_context = True, hidden=True, name='eval')
 async def _eval(ctx, *, body: str):
     if ctx.message.author.id in ownerids:
-    env = {
+        env = {
         'bot': bot,
         'ctx': ctx,
         'channel': ctx.message.channel,
@@ -187,16 +187,10 @@ async def _eval(ctx, *, body: str):
             if value:
                 await ctx.bot.say(f'```py\n{value}\n```')
         else:
-            await ctx.bot.say(f'```py\n{value}{ret}\n```')  
-    else:
-        await ctx.bot.say("Sorry. You are not a developer.")
-
-
-    
-            
-#I might put really unnessasary things here like the bee movie script, so don't freak lmao
-
+            await ctx.bot.say(f'```py\n{value}{ret}\n```')
+    else: 
+         await ctx.bot.say("Sorry. You are not a developer.")
 
 
         
-bot.run("token")
+bot.run("key")
