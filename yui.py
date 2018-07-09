@@ -61,6 +61,7 @@ async def on_ready():
     return await client.change_presence(game=discord.Game(name='with my smart developer ;p;',status=discord.Status("dnd"))) 
 #Here i have put commands that don't require the commad prefix (*)... Editable i guess  
 
+
 @bot.event
 async def on_message(message):
     if message.content == "gay":
