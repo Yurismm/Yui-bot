@@ -147,12 +147,7 @@ async def help(ctx):
 
 
 
-        
-<<<<<<< HEAD
-bot.run("key")
-=======
-=======
->>>>>>> 78b5a4d647add3fc8db68fc267b7d5da9cf773ff
+    
 if not os.environ.get('TOKEN'):
     print("no token found REEEE!")
 bot.run(os.environ.get('TOKEN').strip('"'))
