@@ -1,17 +1,20 @@
 import discord
-from discord.ext.commands import Bot
+#from discord.ext.commands import Bot   <------    this does nothing
 from discord.ext import commands
 import asyncio
 import os
 import random
 import json
+import logging
 import sys
 import subprocess
 import platform
 import datetime
+from contextlib import redirect_stdout
 import sys
 import logging
 import traceback
+import textwrap
 
 # I keep anything like game status, dnd , def etc
 
@@ -23,6 +26,7 @@ def process_message(message):
 Client = discord.Client()
 bot = commands.Bot(command_prefix = "*")
 
+logging.basicConfig(level=logging.ERROR)
 
 
 def process_message(message):
@@ -30,8 +34,19 @@ def process_message(message):
  
     return args
 
-@bot.event
+def cleanup_code(content):
+    '''Automatically removes code blocks from the code.'''
+    # remove ```py\n```
+    if content.startswith('```') and content.endswith('```'):
+        return '\n'.join(content.split('\n')[1:-1])
 
+    return content.strip('` \n')
+
+
+
+ownerids=['358970589697933314', '293159670040887297', '115707766714138627']
+
+@bot.event
 async def on_ready():
     print('Logged in as '+client.user.name+' (ID:'+client.user.id+') | Connected to '+str(len(client.servers))+' servers | Connected to '+str(len(set(client.get_all_members())))+' users')
     print('--------')
@@ -108,7 +123,7 @@ async def on_message(message):
 
     else: pass
 
-@bot.remove_command('help')
+bot.remove_command('help')
 
 @bot.command(pass_context=True)
 async def help(ctx):
@@ -128,6 +143,52 @@ async def help(ctx):
             s = "/help [command] for help on that command```"
             await bot.say(s)
 
+
+@bot.command(pass_context = True, hidden=True, name='eval')
+async def _eval(ctx, *, body: str):
+    if ctx.message.author.id in ownerids:
+    env = {
+        'bot': bot,
+        'ctx': ctx,
+        'channel': ctx.message.channel,
+        'author': ctx.message.author,
+        'guild': ctx.message.server,
+        'message': ctx.message,
+    }
+
+    env.update(globals())
+  
+    body = cleanup_code(body)
+    stdout = io.StringIO()
+
+    to_compile = f'async def func():\n{textwrap.indent(body, "  ")}'
+
+    try:
+        exec(to_compile, env)
+    except Exception as e:
+        return await ctx.bot.say(f'```py\n{e.__class__.__name__}: {e}\n```')
+
+    func = env['func']
+    try:
+        with redirect_stdout(stdout):
+            ret = await func()
+    except Exception as e:
+        value = stdout.getvalue()
+        await ctx.bot.say(f'```py\n{value}{type(e).__name__}: {e}\n```')
+    else:
+        value = stdout.getvalue()
+        try:
+            await ctx.message.add_reaction('\u2705')
+        except:
+            pass
+
+        if ret is None:
+            if value:
+                await ctx.bot.say(f'```py\n{value}\n```')
+        else:
+            await ctx.bot.say(f'```py\n{value}{ret}\n```')  
+    else:
+        await ctx.bot.say("Sorry. You are not a developer.")
 
 
     
